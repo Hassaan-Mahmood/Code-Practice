@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My - Todo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="ledger">
+      <div class="ledger-head">
+        <h1>My Tasks</h1>
+        <span>daily task record</span>
+      </div>
+
+      <div class="entry">
+        <input type="text" id="taskInput" placeholder="Write a new task…" />
+      </div>
+
+      <div class="toolbar">
+        <button class="btn add" id="addBtn">+ Add</button>
+        <button class="btn edit" id="editBtn">Edit</button>
+        <button class="btn delete" id="deleteBtn">Delete</button>
+        <button class="btn clear" id="clearBtn">Clear all</button>
+        <button class="btn reset" id="resetBtn">Reset</button>
+      </div>
+
+      <div class="column">
+        <h2><span class="dot"></span>Today</h2>
+        <ul id="list"></ul>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
