@@ -65,6 +65,8 @@ function editTask() {
   if (usrTask === "") {
     alert("Please enter a task")
     return;
-  }
-  
+
+  tasks.push("userTask");
+
+  save Task
 }
