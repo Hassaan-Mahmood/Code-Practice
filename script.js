@@ -52,3 +52,7 @@ function renderTasks() {
     list.appendChild(li); // add into UL
   }
 }
+
+li.onlick = function () {
+  
+}
