@@ -195,6 +195,7 @@ li:last-child {
 }
 li.selected {
   background: #f2ecdd;
+  
 }
 
 .check {
