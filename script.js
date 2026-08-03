@@ -54,5 +54,17 @@ function renderTasks() {
 }
 
 li.onlick = function () {
+
+}
+
+// =======================
+//  Edit Tasks
+// =======================
+function editTask() {
+  let userTasks = input.value.trim()
+  if (usrTask === "") {
+    alert("Please enter a task")
+    return;
+  }
   
 }
