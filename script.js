@@ -2,26 +2,18 @@
 //  Getting HTML Elements
 // =======================
 
-// input box
-let inputTask = document.getElementById("inputTask");
+let inputTask = document.getElementById("taskInput");
 
-// buttons
 let addBtn = document.getElementById("addBtn");
-let ediBtn = document.getElementById("editBtn");
+let editBtn = document.getElementById("editBtn");
 let deleteBtn = document.getElementById("deleteBtn");
 let clearBtn = document.getElementById("clearBtn");
 let resetBtn = document.getElementById("resetBtn");
 
-// UL
 let list = document.getElementById("list");
 
-// Array to store tasks
 let tasks = [];
-
-// which task is selected?
 let selectedIndex = -1;
-
-// which task is being edited?
 let editIndex = -1;
 
 // =======================
@@ -42,31 +34,106 @@ function loadTasks() {
 }
 
 // =======================
+//  Add Tasks
+// =======================
+function addTask() {
+  let task = inputTask.value.trim();
+  if (task === "") {
+    alert("Enter a task");
+    return;
+  }
+
+  if (editIndex === -1) {
+    tasks.push(task);
+  } else {
+    tasks[editIndex] = tasks;
+    editIndex = -1;
+  }
+  saveTasks();
+  renderTasks();
+  inputTask.value = "";
+  inputTask.focus();
+}
+
+// =======================
 //  Render Tasks
 // =======================
 function renderTasks() {
-  list.innerHTML = ""; // clear the list before rendering
-  for (let i = 0; i < tasks.length; i++) { // loop through the array
-    let li = document.createElement("li"); // create a list item
-    li.innerHTML = tasks[i]; // put the task text in the list item
-    list.appendChild(li); // add into UL
+  list.innerHTML = "";
+
+  for (let i = 0; i < tasks.length; i++) {
+    let li = document.createElement("li");
+    li.innerHTML = tasks[i];
+    list.appendChild(li);
+    li.onclick = function () {
+      if (selectedIndex === i) {
+        selectedIndex = -1;
+        li.classList.remove("selected");
+      } else {
+        let allLi = document.querySelectorAll("#list li");
+        for (let j = 0; j < allLi.length; j++) {
+          allLi[j].classList.remove("selected");
+        }
+        selectedIndex = i;
+        li.classList.add("selected");
+      }
+    };
+    console.log(selectedIndex);
   }
 }
 
-li.onlick = function () {
+// // =======================
+// //  Delete Tasks
+// // =======================
 
+function deleteTask() {
+  if (selectedIndex === -1) {
+    alert("Please select a task first");
+    return;
+  }
+  tasks.splice(selectedIndex, 1);
+  saveTasks();
+  renderTasks();
 }
 
 // =======================
 //  Edit Tasks
 // =======================
+
 function editTask() {
-  let userTasks = input.value.trim()
-  if (usrTask === "") {
-    alert("Please enter a task")
+  if (selectedIndex === -1) {
+    alert("Please select a task first");
     return;
-
-  tasks.push("userTask");
-
-  save Task
+  }
+  editIndex = selectedIndex;
+  inputTask.value = tasks[editIndex];
+  inputTask.focus();
 }
+
+// =======================
+//  Clear All Tasks
+// =======================
+function clearAll() {
+  tasks = [];
+  saveTasks();
+  renderTasks();
+}
+
+// =======================
+//  Reset Input
+// =======================
+function resetInput() {
+  inputTask.value = "";
+  renderTasks();
+  inputTask.focus();
+}
+
+// // Calling the functions through buttons
+addBtn.addEventListener("click", addTask);
+deleteBtn.addEventListener("click", deleteTask);
+editBtn.addEventListener("click", editTask);
+clearBtn.addEventListener("click", clearAll);
+resetBtn.addEventListener("click", resetInput);
+
+loadTasks();
+renderTasks();
