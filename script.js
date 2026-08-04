@@ -137,3 +137,150 @@ resetBtn.addEventListener("click", resetInput);
 
 loadTasks();
 renderTasks();
+
+
+
+
+
+// ======================================================
+// Budget Calculator
+// ======================================================
+
+var expenseName = document.getElementById('expenseName')
+var amount = document.getElementById('amount')
+var list = document.getElementById('list')
+var totalAmount = document.getElementById('totalAmount')
+
+var allExpenses = []
+
+
+function addExpense() {
+    if (expenseName === "" || amount === "") {
+        alert('Please fill the form')
+    } else {
+        var obj = {
+            name: expenseName.value,
+            amount: amount.value
+        }
+        allExpenses.push(obj);
+        expenseName.value = "";
+        amount.value = "";
+        listExpense()
+        showTotalAmount()
+    }
+}
+
+
+function listExpense() {
+    list.innerHTML = "";
+    for (var i = 0; i < allExpenses.length; i++) {
+        var item = allExpenses[i];
+        list.innerHTML += `<div class="item">
+          <div class="left">
+            <h3>${item.name}</h3>
+          </div>
+
+          <div class="right">
+            <span class="price">${item.amount}</span>
+
+            <div class="actions">
+              <button class="edit" title="Edit">✏️</button>
+              <button class="delete" title="Delete">🗑️</button>
+            </div>
+          </div>
+        </div>`
+    }
+}
+
+function deleteExpense() { }
+function editExpense() { };
+
+function showTotalAmount() {
+    var total = 0;
+    for (var i = 0; i < allExpenses.length; i++) {
+        var item = allExpenses[i];
+        total += Number(item.amount)
+    }
+    totalAmount.innerHTML = total
+}
+
+
+listExpense()
+showTotalAmount()
+
+function deleteExpense() { }
+function editExpense() { };
+
+function showTotalAmount() {
+    var total = 0;
+    for (var i = 0; i < allExpenses.length; i++) {
+        var item = allExpenses[i];
+        total += Number(item.amount)
+    }
+    totalAmount.innerHTML = total
+}
+
+
+listExpense()
+showTotalAmount()
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>`
+    }
+}
+
+function deleteExpense() { }
+function editExpense() { };
+
+function showTotalAmount() {
+    var total = 0;
+    for (var i = 0; i < allExpenses.length; i++) {
+        var item = allExpenses[i];
+        total += Number(item.amount)
+    }
+    totalAmount.innerHTML = total
+}
+
+
+listExpense()
+showTotalAmount()
+
+
+
+
+
+
+
+
+
+
+
+
+
+function deleteExpense() { }
+function editExpense() { };
+
+function showTotalAmount() {
+    var total = 0;
+    for (var i = 0; i < allExpenses.length; i++) {
+        var item = allExpenses[i];
+        total += Number(item.amount)
+    }
+    totalAmount.innerHTML = total
+}
+
+
+listExpense()
+showTotalAmount()
