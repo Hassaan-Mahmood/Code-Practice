@@ -214,22 +214,26 @@
 //   showTotal();
 // }
 
-// function editItem(index) {
-//   editIndex = index;
-//   expenseName.value = allItems[index].name;
-//   expenseAmount.value = allItems[index].amount;
-//   expenseName.focus();
-//   addBtn.innerHTML = `Update Expense`;
-// }
+function editItem(index) {
+  var userNewItem = expenseName.value;
+  var userNewAmount = expenseAmount.value;
+  userNewItem = allItems[index].name;
+  userNewAmount = allItems[index].amount;
+  expenseName.focus();
+  allItems.splice(index, 1, userNewItem);
+  allItems.splice(index, 1, userNewAmount);
+  console.log(expenseAmount.value);
+  // renderItem();
+}
 
-// function showTotal() {
-//   var total = 0;
-//   for (let i = 0; i < allItems.length; i++) {
-//     var sum = allItems[i];
-//     total += Number(sum.amount);
-//   }
-//   totalAmount.innerHTML = total;
-// }
+function showTotal() {
+  var total = 0;
+  for (let i = 0; i < allItems.length; i++) {
+    var sum = allItems[i];
+    total += Number(sum.amount);
+  }
+  totalAmount.innerHTML = total;
+}
 
-// renderItem();
-// showTotal();
+renderItem();
+showTotal();
