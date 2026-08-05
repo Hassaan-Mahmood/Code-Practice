@@ -223,3 +223,5 @@ function showTotal() {
 
 renderItem();
 showTotal();
+
+console.log("Hello World 1");
