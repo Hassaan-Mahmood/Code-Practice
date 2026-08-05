@@ -1,6 +1,10 @@
-// // =======================
-// //  Getting HTML Elements
-// // =======================
+// =================================================================================================
+// Todo Tasks List
+// =================================================================================================
+
+// =======================
+//  Getting HTML Elements
+// =======================
 
 // let inputTask = document.getElementById("taskInput");
 
@@ -128,7 +132,7 @@
 //   inputTask.focus();
 // }
 
-// // // Calling the functions through buttons
+// // Calling the functions through buttons
 // addBtn.addEventListener("click", addTask);
 // deleteBtn.addEventListener("click", deleteTask);
 // editBtn.addEventListener("click", editTask);
@@ -142,84 +146,90 @@
 // Budget Calculator
 // =================================================================================================
 
-var expenseName = document.getElementById("expenseName");
-var amount = document.getElementById("amount");
-var list = document.getElementById("list");
-var totalAmount = document.getElementById("totalAmount");
+// var expenseName = document.getElementById("expenseName");
+// var amount = document.getElementById("amount");
+// var list = document.getElementById("list");
+// var totalAmount = document.getElementById("totalAmount");
 
-var allExpenses = [];
+// var allExpenses = [];
 
-var expenseName = document.getElementById("expenseName");
-var expenseAmount = document.getElementById("amount");
-var list = document.getElementById("list");
-var totalAmount = document.getElementById("totalAmount");
-var allItems = [];
+// var expenseName = document.getElementById("expenseName");
+// var expenseAmount = document.getElementById("amount");
+// var list = document.getElementById("list");
+// var totalAmount = document.getElementById("totalAmount");
+// var addBtn = document.getElementById("addBtn");
+// var allItems = [];
+// var editIndex = -1;
 
-function addExpense() {
-  if (expenseName.value == "" || expenseAmount.value == "") {
-    alert("Please fill the form first!");
-    // return
-  } else {
-    var obj = {
-      name: expenseName.value,
-      amount: expenseAmount.value,
-    };
-    allItems.push(obj);
-    renderItem();
-    showTotal();
-  }
-}
+// function addExpense() {
+//   var userItemName = expenseName.value.trim();
+//   var userItemAmout = expenseAmount.value.trim();
+//   if (userItemName == "" || userItemAmout == "") {
+//     alert("Please fill the form first!");
+//     return;
+//   }
+//   if (editIndex === -1) {
+//     var obj = {
+//       name: expenseName.value,
+//       amount: expenseAmount.value,
+//     };
+//     allItems.push(obj);
+//   } else {
+//     allItems[editIndex].name = userItemName;
+//     allItems[editIndex].amount = userItemAmout;
+//     editIndex = -1;
+//     addBtn.innerHTML = `Add Expense`;
+//   }
 
-function renderItem() {
-  list.innerHTML = "";
-  for (var i = 0; i < allItems.length; i++) {
-    var item = allItems[i];
-    list.innerHTML += `
-        <div class="item">
-          <div class="left">
-            <h3>${item.name}</h3>
-          </div>
-          <div class="right">
-            <span class="price">${item.amount}</span>
-            <div class="actions">
-              <button onclick="editItem(${i})" class="edit" title="Edit">✏️</button>
-              <button onclick="deleteItem(${i})" class="delete" title="Delete">🗑️</button>
-            </div>
-          </div>
-        </div>`;
-  }
-  expenseName.value = "";
-  expenseAmount.value = "";
-  expenseName.focus();
-  expenseAmount.focus();
-}
+//   renderItem();
+//   showTotal();
+// }
 
-function deleteItem(index) {
-  allItems.splice(index, 1);
-  renderItem();
-  showTotal();
-}
+// function renderItem() {
+//   list.innerHTML = "";
+//   for (var i = 0; i < allItems.length; i++) {
+//     var item = allItems[i];
+//     list.innerHTML += `
+//         <div class="item">
+//           <div class="left">
+//             <h3>${item.name}</h3>
+//           </div>
+//           <div class="right">
+//             <span class="price">${item.amount}</span>
+//             <div class="actions">
+//               <button onclick="editItem(${i})" class="edit" title="Edit">✏️</button>
+//               <button onclick="deleteItem(${i})" class="delete" title="Delete">🗑️</button>
+//             </div>
+//           </div>
+//         </div>`;
+//   }
+//   expenseName.value = "";
+//   expenseAmount.value = "";
+//   expenseName.focus();
+// }
 
-function editItem(index) {
-  var userNewItem = expenseName.value;
-  var userNewAmount = expenseAmount.value;
-  userNewItem = allItems[index].name;
-  userNewAmount = allItems[index].amount;
-  expenseName.focus();
-  allItems.splice(index, 1, userNewItem);
-  allItems.splice(index, 1, userNewAmount);
-  console.log(expenseAmount.value);
-  // renderItem();
-}
+// function deleteItem(index) {
+//   allItems.splice(index, 1);
+//   renderItem();
+//   showTotal();
+// }
 
-function showTotal() {
-  var total = 0;
-  for (let i = 0; i < allItems.length; i++) {
-    var sum = allItems[i];
-    total += Number(sum.amount);
-  }
-  totalAmount.innerHTML = total;
-}
+// function editItem(index) {
+//   editIndex = index;
+//   expenseName.value = allItems[index].name;
+//   expenseAmount.value = allItems[index].amount;
+//   expenseName.focus();
+//   addBtn.innerHTML = `Update Expense`;
+// }
 
-renderItem();
-showTotal();
+// function showTotal() {
+//   var total = 0;
+//   for (let i = 0; i < allItems.length; i++) {
+//     var sum = allItems[i];
+//     total += Number(sum.amount);
+//   }
+//   totalAmount.innerHTML = total;
+// }
+
+// renderItem();
+// showTotal();
