@@ -421,3 +421,166 @@ quiz();
 
 renderItem();
 showTotal();
+
+
+// 8 August 2026 sir code 
+
+var questionBar = document.getElementById('question-bar');
+var question = document.getElementById('question');
+var options = document.getElementById('options');
+
+var count = 0;
+var isSelected = false;
+var selectedText = '';
+var successCount = 0;
+var failureCount = 0;
+
+function quiz() {
+    options.innerHTML = ''
+    questionBar.innerHTML = `Question ${count + 1}/${htmlQuestions.length}`;
+    var obj = htmlQuestions[count];
+
+    question.innerHTML = obj.question;
+    for (var i = 0; i < obj.options.length; i++) {
+        var item = obj.options[i];
+        if (selectedText === item) {
+            options.innerHTML += `<button class="selected-option" onclick="isOptionSelected('${item}')">${item}</button>`
+        } else {
+            options.innerHTML += `<button onclick="isOptionSelected('${item}')">${item}</button>`
+        }
+    }
+}
+
+
+function next() {
+
+    if (isSelected === false) {
+        alert("Please select an option first");
+        return;
+    }
+
+    // Selected value reset
+    isSelected = false;
+    selectedText = ''
+
+
+    if (count < htmlQuestions.length - 1) {
+        count++;
+        quiz()
+    } else {
+        alert("Quiz has been completed")
+    }
+
+    if (selectedText) {
+        successCount++
+    } else {
+        failureCount++
+    }
+
+    // 
+}
+
+function isOptionSelected(item) {
+    selectedText = item;
+    isSelected = true;
+    quiz();
+}
+
+quiz()
+
+
+
+
+
+// 8 August 2026 my code 
+
+
+
+var questionBar = document.getElementById('question-bar');
+var question = document.getElementById('question');
+var options = document.getElementById('options');
+
+var count = 0;
+var isSelected = false;
+var selectedText = '';
+var successCount = 0;
+var failureCount = 0;
+
+function quiz() {
+    options.innerHTML = ''
+    questionBar.innerHTML = `Question ${count + 1}/${htmlQuestions.length}`;
+    var obj = htmlQuestions[count];
+
+    question.innerHTML = obj.question;
+    for (var i = 0; i < obj.options.length; i++) {
+        var item = obj.options[i];
+        if (selectedText === item) {
+            options.innerHTML += `<button class="selected-option" onclick="isOptionSelected('${item}')">${item}</button>`
+            
+            var allAnswers = htmlQuestions[count].answer;
+            if (selectedText === allAnswers) {
+                successCount++
+                // console.log("successCount",successCount);
+                
+            } else {
+                failureCount++
+                // console.log("failureCount",failureCount);
+            }
+
+        } else {
+            options.innerHTML += `<button onclick="isOptionSelected('${item}')">${item}</button>`
+        }
+    }
+
+    
+ console.log("successCount",successCount);
+console.log("failureCount",failureCount);
+}
+
+
+function next() {
+
+    if (isSelected === false) {
+        alert("Please select an option first");
+        return;
+    }
+
+    // if (selectedText === htmlQuestions[count].answer) {
+    //     successCount++
+    // } else {
+    //     failureCount++
+    // }
+
+
+    // Selected value reset
+    isSelected = false;
+    selectedText = ''
+
+
+    if (count < htmlQuestions.length - 1) {
+        count++;
+        quiz()
+    } else {
+        alert("Quiz has been completed")
+    }
+
+
+
+}
+
+function isOptionSelected(item) {
+    selectedText = item;
+    isSelected = true;
+    quiz();
+}
+
+
+
+
+quiz()
+
+
+
+
+
+
