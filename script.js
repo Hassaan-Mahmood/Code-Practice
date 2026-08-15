@@ -614,3 +614,1057 @@ function isOptionSelected(item) {
 
 
 quiz()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Management</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">School Management</div>
+    <div class="user">Admin</div>
+  </nav>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h3>Management</h3>
+
+    <a href="index.html" class="active">
+      🎓 Student
+    </a>
+
+    <a href="teacher.html">
+      👨‍🏫 Teacher
+    </a>
+
+    <a href="class.html">
+      📚 Class
+    </a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+
+      <section class="card" id="student">
+        <h2>Student</h2>
+
+      </section>
+
+      <section class="card" id="teacher">
+        <h2>Teacher</h2>
+
+      </section>
+
+      <section class="card" id="class">
+        <h2>Class</h2>
+   
+      </section>
+
+    </div>
+  </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+      <!-- Button -->
+      <div class="top-bar">
+        <button class="add-btn" onclick="openModal()">+ Add Student</button>
+      </div>
+
+      <!-- Table -->
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Education</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody id="userTable">
+          
+        </tbody>
+      </table>
+    </div>
+
+    
+
+    <!-- Modal -->
+    <div class="modal" id="userModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Add Student</h2>
+
+          <span class="close" onclick="closeModal()"> &times; </span>
+        </div>
+
+        <form>
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="name" placeholder="Enter name" required />
+          </div>
+
+          <div class="form-group">
+            <label>Age</label>
+            <input type="number" id="age" placeholder="Enter age" required />
+          </div>
+
+          <div class="form-group">
+            <label>Education</label>
+            <input
+              type="text"
+              id="education"
+              placeholder="Enter education"
+              required
+            />
+          </div>
+
+          <button type="button" class="save-btn" onclick="saveStudent()">
+            Save Student
+          </button>
+        </form>
+      </div>
+    </div>
+
+
+
+    <script src="global.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f6f8;
+  padding: 30px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Top Section */
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.add-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.add-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+th,
+td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #2563eb;
+  color: white;
+}
+
+tr:hover {
+  background: #f8fafc;
+}
+
+/* Modal Background */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Box */
+.modal-content {
+  width: 400px;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  font-size: 22px;
+}
+
+.close {
+  font-size: 25px;
+  cursor: pointer;
+  color: #555;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #2563eb;
+}
+
+.save-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #16a34a;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.save-btn:hover {
+  background: #15803d;
+}
+
+
+
+
+/* Navbar */
+.navbar {
+  height: 60px;
+  background: #2563eb;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.navbar .user {
+  font-size: 15px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 230px;
+  height: calc(100vh - 60px);
+  background: #1e293b;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  padding-top: 20px;
+}
+
+.sidebar h3 {
+  color: #94a3b8;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 0 20px 10px;
+}
+
+.sidebar a {
+  display: block;
+  color: #e2e8f0;
+  text-decoration: none;
+  padding: 15px 20px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: #2563eb;
+  color: white;
+}
+
+/* Main Content */
+.main {
+  margin-left: 230px;
+  padding: 90px 30px 30px;
+}
+
+.main h1 {
+  margin-bottom: 25px;
+  color: #1e293b;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #64748b;
+  line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var paragraphs = document.getElementsByTagName("p");
+// paragraphs[1].innerHTML = "Hello World"
+
+
+// var paragraphs = document.getElementsByClassName('para')
+// console.log(paragraphs[0]);
+
+
+
+// var paragraph = document.querySelector('#heading')
+// var paragraph = document.querySelectorAll('.para')
+// console.log(paragraph);
+
+
+var modal = document.getElementById("userModal");
+var table = document.getElementById("userTable");
+var userName = document.getElementById("name");
+var age = document.getElementById("age");
+var education = document.getElementById("education");
+var userTable = document.getElementById("userTable");
+var allStudents = []
+
+function displayStudents() {
+    userTable.innerHTML = ""
+    for (var i = 0; i < allStudents.length; i++) {
+        var item = allStudents[i]
+        userTable.innerHTML += `<tr>
+            <td>${i + 1}</td>
+            <td>${item.name}</td>
+            <td>${item.age}</td>
+            <td>${item.education}</td>
+            <td><button>✏️</button><button onclick="deleteStudent('${i}')">❌</button></td>
+          </tr>`
+    }
+}
+
+displayStudents()
+
+function saveStudent() {
+    var obj = {
+        name: userName.value,
+        age: age.value,
+        education: education.value,
+        id: Date.now()
+    }
+
+    allStudents.push(obj);
+
+    // Reset the fields
+    userName.value = ""
+    age.value = ""
+    education.value = ""
+
+    // Close modal
+    closeModal();
+
+    displayStudents()
+}
+
+
+function deleteStudent(index) {
+    if (confirm("Are you sure you want to delete this record?")) {
+        allStudents.splice(Number(index), 1)
+        displayStudents()
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class Management</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">School Management</div>
+    <div class="user">Admin</div>
+  </nav>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h3>Management</h3>
+
+    <a href="index.html">
+      🎓 Student
+    </a>
+
+    <a href="teacher.html">
+      👨‍🏫 Teacher
+    </a>
+
+    <a href="class.html" class="active">
+      📚 Class
+    </a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+
+      <section class="card" id="student">
+        <h2>Student</h2>
+
+      </section>
+
+      <section class="card" id="teacher">
+        <h2>Teacher</h2>
+
+      </section>
+
+      <section class="card" id="class">
+        <h2>Class</h2>
+
+      </section>
+
+    </div>
+  </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container">
+    <!-- Button -->
+    <div class="top-bar">
+      <button class="add-btn" onclick="openModal()">+ Add Class</button>
+    </div>
+
+    <!-- Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody id="userTable">
+
+      </tbody>
+    </table>
+  </div>
+
+
+
+  <!-- Modal -->
+  <div class="modal" id="userModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Add Class</h2>
+
+        <span class="close" onclick="closeModal()"> &times; </span>
+      </div>
+
+      <form>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" id="name" placeholder="Enter name" required />
+        </div>
+
+
+        <button type="button" class="save-btn" onclick="saveClass()">
+          Save Class
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+
+  <script src="global.js"></script>
+  <script src="class.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var modal = document.getElementById("userModal");
+var table = document.getElementById("userTable");
+var userName = document.getElementById("name");
+var userTable = document.getElementById("userTable");
+var allClasses = []
+
+function displayClass() {
+    userTable.innerHTML = ""
+    for (var i = 0; i < allClasses.length; i++) {
+        var item = allClasses[i]
+        userTable.innerHTML += `<tr>
+            <td>${i + 1}</td>
+            <td>${item.name}</td>
+            <td><button>✏️</button><button onclick="deleteTeacher('${i}')">❌</button></td>
+          </tr>`
+    }
+}
+
+displayClass()
+
+function saveClass() {
+    var obj = {
+        name: userName.value,
+        id: Date.now()
+    }
+
+    allClasses.push(obj);
+
+    // Reset the fields
+    userName.value = ""
+
+    // Close modal
+    closeModal();
+
+    displayClass()
+}
+
+
+function deleteTeacher(index) {
+    if (confirm("Are you sure you want to delete this record?")) {
+        allClasses.splice(Number(index), 1)
+        displayClass()
+    }
+
+}
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Management</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+
+       <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">School Management</div>
+    <div class="user">Admin</div>
+  </nav>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h3>Management</h3>
+
+    <a href="index.html" >
+      🎓 Student
+    </a>
+
+    <a href="teacher.html" class="active">
+      👨‍🏫 Teacher
+    </a>
+
+    <a href="class.html">
+      📚 Class
+    </a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+
+      <section class="card" id="student">
+        <h2>Student</h2>
+
+      </section>
+
+      <section class="card" id="teacher">
+        <h2>Teacher</h2>
+
+      </section>
+
+      <section class="card" id="class">
+        <h2>Class</h2>
+   
+      </section>
+
+    </div>
+  </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+      <!-- Button -->
+      <div class="top-bar">
+        <button class="add-btn" onclick="openModal()">+ Add Teacher</button>
+      </div>
+
+      <!-- Table -->
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Education</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody id="userTable"></tbody>
+      </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="userModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Add Teacher</h2>
+
+          <span class="close" onclick="closeModal()"> &times; </span>
+        </div>
+
+        <form>
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="name" placeholder="Enter name" required />
+          </div>
+
+          <div class="form-group">
+            <label>Age</label>
+            <input type="number" id="age" placeholder="Enter age" required />
+          </div>
+
+          <div class="form-group">
+            <label>Education</label>
+            <input
+              type="text"
+              id="education"
+              placeholder="Enter education"
+              required
+            />
+          </div>
+
+          <button type="button" class="save-btn" onclick="saveTeacher()">
+            Save Teacher
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="global.js"></script>
+    <script src="teacher.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+var modal = document.getElementById("userModal");
+var table = document.getElementById("userTable");
+var userName = document.getElementById("name");
+var age = document.getElementById("age");
+var education = document.getElementById("education");
+var userTable = document.getElementById("userTable");
+var allTeachers = []
+
+function displayTeachers() {
+    userTable.innerHTML = ""
+    for (var i = 0; i < allTeachers.length; i++) {
+        var item = allTeachers[i]
+        userTable.innerHTML += `<tr>
+            <td>${i + 1}</td>
+            <td>${item.name}</td>
+            <td>${item.age}</td>
+            <td>${item.education}</td>
+            <td><button>✏️</button><button onclick="deleteTeacher('${i}')">❌</button></td>
+          </tr>`
+    }
+}
+
+displayTeachers()
+
+function saveTeacher() {
+    var obj = {
+        name: userName.value,
+        age: age.value,
+        education: education.value,
+        id: Date.now()
+    }
+
+    allTeachers.push(obj);
+
+    // Reset the fields
+    userName.value = ""
+    age.value = ""
+    education.value = ""
+
+    // Close modal
+    closeModal();
+
+    displayTeachers()
+}
+
+
+function deleteTeacher(index) {
+    if (confirm("Are you sure you want to delete this record?")) {
+        allTeachers.splice(Number(index), 1)
+        displayTeachers()
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function openModal() {
+    modal.style.display = "flex";
+}
+
+function closeModal() {
+    modal.style.display = "none";
+}
+
+function windowClick() {
+    if (event.target === modal) {
+        closeModal();
+    }
+}
+
+
+// Close modal when clicking outside
+window.onclick = windowClick
+
