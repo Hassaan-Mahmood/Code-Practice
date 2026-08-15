@@ -1,11 +1,7 @@
 
 
 
-console.log(26);
-console.log(27);
-console.log(28);
-console.log(29);
-console.log(30);
+
 console.log(31);
 console.log(32);
 console.log(33);
