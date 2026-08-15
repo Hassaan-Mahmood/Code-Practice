@@ -610,7 +610,7 @@ quiz()
 
 
 
-
+// 15 August 2026
 
 
 <!doctype html>
@@ -670,21 +670,6 @@ quiz()
 
     </div>
   </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -760,31 +745,68 @@ quiz()
 </html>
 
 
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class Management</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
 
 
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">School Management</div>
+    <div class="user">Admin</div>
+  </nav>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h3>Management</h3>
+
+    <a href="index.html">
+      🎓 Student
+    </a>
+
+    <a href="teacher.html">
+      👨‍🏫 Teacher
+    </a>
+
+    <a href="class.html" class="active">
+      📚 Class
+    </a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+
+      <section class="card" id="student">
+        <h2>Student</h2>
+
+      </section>
+
+      <section class="card" id="teacher">
+        <h2>Teacher</h2>
+
+      </section>
+
+      <section class="card" id="class">
+        <h2>Class</h2>
+
+      </section>
+
+    </div>
+  </main>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// ==============  CSS =================
 
 * {
   margin: 0;
@@ -1025,21 +1047,7 @@ tr:hover {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// ================ JS ==================
 
 // var paragraphs = document.getElementsByTagName("p");
 // paragraphs[1].innerHTML = "Hello World"
@@ -1118,104 +1126,6 @@ function deleteStudent(index) {
 
 
 
-
-
-
-
-
-
-
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class Management</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-
-
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">School Management</div>
-    <div class="user">Admin</div>
-  </nav>
-
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <h3>Management</h3>
-
-    <a href="index.html">
-      🎓 Student
-    </a>
-
-    <a href="teacher.html">
-      👨‍🏫 Teacher
-    </a>
-
-    <a href="class.html" class="active">
-      📚 Class
-    </a>
-  </aside>
-
-  <!-- Main Content -->
-  <main class="main">
-    <h1>Dashboard</h1>
-
-    <div class="cards">
-
-      <section class="card" id="student">
-        <h2>Student</h2>
-
-      </section>
-
-      <section class="card" id="teacher">
-        <h2>Teacher</h2>
-
-      </section>
-
-      <section class="card" id="class">
-        <h2>Class</h2>
-
-      </section>
-
-    </div>
-  </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <div class="container">
     <!-- Button -->
     <div class="top-bar">
@@ -1270,75 +1180,6 @@ function deleteStudent(index) {
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var modal = document.getElementById("userModal");
-var table = document.getElementById("userTable");
-var userName = document.getElementById("name");
-var userTable = document.getElementById("userTable");
-var allClasses = []
-
-function displayClass() {
-    userTable.innerHTML = ""
-    for (var i = 0; i < allClasses.length; i++) {
-        var item = allClasses[i]
-        userTable.innerHTML += `<tr>
-            <td>${i + 1}</td>
-            <td>${item.name}</td>
-            <td><button>✏️</button><button onclick="deleteTeacher('${i}')">❌</button></td>
-          </tr>`
-    }
-}
-
-displayClass()
-
-function saveClass() {
-    var obj = {
-        name: userName.value,
-        id: Date.now()
-    }
-
-    allClasses.push(obj);
-
-    // Reset the fields
-    userName.value = ""
-
-    // Close modal
-    closeModal();
-
-    displayClass()
-}
-
-
-function deleteTeacher(index) {
-    if (confirm("Are you sure you want to delete this record?")) {
-        allClasses.splice(Number(index), 1)
-        displayClass()
-    }
-
-}
-
-
-
-
-
-
 
 
 <!doctype html>
@@ -1398,16 +1239,6 @@ function deleteTeacher(index) {
 
     </div>
   </main>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1488,6 +1319,63 @@ function deleteTeacher(index) {
 
 
 
+
+
+
+
+
+
+
+
+var modal = document.getElementById("userModal");
+var table = document.getElementById("userTable");
+var userName = document.getElementById("name");
+var userTable = document.getElementById("userTable");
+var allClasses = []
+
+function displayClass() {
+    userTable.innerHTML = ""
+    for (var i = 0; i < allClasses.length; i++) {
+        var item = allClasses[i]
+        userTable.innerHTML += `<tr>
+            <td>${i + 1}</td>
+            <td>${item.name}</td>
+            <td><button>✏️</button><button onclick="deleteTeacher('${i}')">❌</button></td>
+          </tr>`
+    }
+}
+
+displayClass()
+
+function saveClass() {
+    var obj = {
+        name: userName.value,
+        id: Date.now()
+    }
+
+    allClasses.push(obj);
+
+    // Reset the fields
+    userName.value = ""
+
+    // Close modal
+    closeModal();
+
+    displayClass()
+}
+
+
+function deleteTeacher(index) {
+    if (confirm("Are you sure you want to delete this record?")) {
+        allClasses.splice(Number(index), 1)
+        displayClass()
+    }
+
+}
+
+
+
+
 var modal = document.getElementById("userModal");
 var table = document.getElementById("userTable");
 var userName = document.getElementById("name");
@@ -1541,75 +1429,6 @@ function deleteTeacher(index) {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
