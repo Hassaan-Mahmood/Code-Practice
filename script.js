@@ -495,7 +495,6 @@ quiz()
 // 8 August 2026 my code 
 
 
-
 var questionBar = document.getElementById('question-bar');
 var question = document.getElementById('question');
 var options = document.getElementById('options');
@@ -545,11 +544,11 @@ function next() {
         return;
     }
 
-    // if (selectedText === htmlQuestions[count].answer) {
-    //     successCount++
-    // } else {
-    //     failureCount++
-    // }
+    if (selectedText === htmlQuestions[count].answer) {
+        successCount++
+    } else {
+        failureCount++
+    }
 
 
     // Selected value reset
@@ -565,7 +564,6 @@ function next() {
     }
 
 
-
 }
 
 function isOptionSelected(item) {
@@ -573,9 +571,6 @@ function isOptionSelected(item) {
     isSelected = true;
     quiz();
 }
-
-
-
 
 quiz()
 
@@ -592,32 +587,20 @@ quiz()
 
 
 
-
-
-
-
-
-
-
-
-
 // 15 August 2026
 
-
-// ================ JS ==================
-
-// var paragraphs = document.getElementsByTagName("p");
-// paragraphs[1].innerHTML = "Hello World"
+var paragraphs = document.getElementsByTagName("p");
+paragraphs[1].innerHTML = "Hello World"
 
 
-// var paragraphs = document.getElementsByClassName('para')
-// console.log(paragraphs[0]);
+var paragraphs = document.getElementsByClassName('para')
+console.log(paragraphs[0]);
 
 
 
-// var paragraph = document.querySelector('#heading')
-// var paragraph = document.querySelectorAll('.para')
-// console.log(paragraph);
+var paragraph = document.querySelector('#heading')
+var paragraph = document.querySelectorAll('.para')
+console.log(paragraph);
 
 
 var modal = document.getElementById("userModal");
@@ -673,215 +656,6 @@ function deleteStudent(index) {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-  <div class="container">
-    <!-- Button -->
-    <div class="top-bar">
-      <button class="add-btn" onclick="openModal()">+ Add Class</button>
-    </div>
-
-    <!-- Table -->
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-
-      <tbody id="userTable">
-
-      </tbody>
-    </table>
-  </div>
-
-
-
-  <!-- Modal -->
-  <div class="modal" id="userModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Add Class</h2>
-
-        <span class="close" onclick="closeModal()"> &times; </span>
-      </div>
-
-      <form>
-        <div class="form-group">
-          <label>Name</label>
-          <input type="text" id="name" placeholder="Enter name" required />
-        </div>
-
-
-        <button type="button" class="save-btn" onclick="saveClass()">
-          Save Class
-        </button>
-      </form>
-    </div>
-  </div>
-
-
-
-  <script src="global.js"></script>
-  <script src="class.js"></script>
-</body>
-
-</html>
-
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Teacher Management</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-
-  <body>
-
-       <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">School Management</div>
-    <div class="user">Admin</div>
-  </nav>
-
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <h3>Management</h3>
-
-    <a href="index.html" >
-      🎓 Student
-    </a>
-
-    <a href="teacher.html" class="active">
-      👨‍🏫 Teacher
-    </a>
-
-    <a href="class.html">
-      📚 Class
-    </a>
-  </aside>
-
-  <!-- Main Content -->
-  <main class="main">
-    <h1>Dashboard</h1>
-
-    <div class="cards">
-
-      <section class="card" id="student">
-        <h2>Student</h2>
-
-      </section>
-
-      <section class="card" id="teacher">
-        <h2>Teacher</h2>
-
-      </section>
-
-      <section class="card" id="class">
-        <h2>Class</h2>
-   
-      </section>
-
-    </div>
-  </main>
-
-
-
-
-
-
-
-    <div class="container">
-      <!-- Button -->
-      <div class="top-bar">
-        <button class="add-btn" onclick="openModal()">+ Add Teacher</button>
-      </div>
-
-      <!-- Table -->
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Education</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-
-        <tbody id="userTable"></tbody>
-      </table>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal" id="userModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>Add Teacher</h2>
-
-          <span class="close" onclick="closeModal()"> &times; </span>
-        </div>
-
-        <form>
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" id="name" placeholder="Enter name" required />
-          </div>
-
-          <div class="form-group">
-            <label>Age</label>
-            <input type="number" id="age" placeholder="Enter age" required />
-          </div>
-
-          <div class="form-group">
-            <label>Education</label>
-            <input
-              type="text"
-              id="education"
-              placeholder="Enter education"
-              required
-            />
-          </div>
-
-          <button type="button" class="save-btn" onclick="saveTeacher()">
-            Save Teacher
-          </button>
-        </form>
-      </div>
-    </div>
-
-    <script src="global.js"></script>
-    <script src="teacher.js"></script>
-  </body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 var modal = document.getElementById("userModal");
