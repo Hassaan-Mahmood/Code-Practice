@@ -782,3 +782,580 @@ function windowClick() {
 // Close modal when clicking outside
 window.onclick = windowClick
 
+
+
+
+
+  //========================================== 18 August 2026======================================================
+  //index.html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Management</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h2>School Admin</h2>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-link active">
+          <span>🎓</span>
+          Student
+        </a>
+
+        <a href="teacher.html" class="nav-link">
+          <span>👨‍🏫</span>
+          Teacher
+        </a>
+
+        <a href="class.html" class="nav-link">
+          <span>📚</span>
+          Class
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Topbar -->
+      <header class="topbar">
+        <div>
+          <h1>Student Management</h1>
+          <p>Manage your students</p>
+        </div>
+
+        <div class="admin-profile">
+          <div class="profile-circle">A</div>
+          <span>Admin</span>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="container">
+        <!-- Button -->
+        <div class="top-bar">
+          <button class="add-btn" onclick="openModal()">+ Add Student</button>
+        </div>
+
+        <!-- Table -->
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Education</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody id="userTable"></tbody>
+        </table>
+      </main>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="userModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Add Student</h2>
+
+          <span class="close" onclick="closeModal()"> &times; </span>
+        </div>
+
+        <form>
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="name" placeholder="Enter name" required />
+          </div>
+
+          <div class="form-group">
+            <label>Age</label>
+            <input type="number" id="age" placeholder="Enter age" required />
+          </div>
+
+          <div class="form-group">
+            <label>Education</label>
+            <input
+              type="text"
+              id="education"
+              placeholder="Enter education"
+              required
+            />
+          </div>
+
+          <button type="button" class="save-btn" onclick="saveStudent()">
+            Save Student
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="global.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
+
+
+// stye.css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f6f8;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 240px;
+  height: 100vh;
+  background: #1e293b;
+  color: white;
+  padding: 25px 15px;
+}
+
+.sidebar-logo {
+  padding: 0 15px 30px;
+  border-bottom: 1px solid #334155;
+}
+
+.sidebar-logo h2 {
+  font-size: 21px;
+}
+
+/* Navigation */
+
+.sidebar-nav {
+  margin-top: 25px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #cbd5e1;
+  text-decoration: none;
+
+  padding: 13px 15px;
+  margin-bottom: 8px;
+
+  border-radius: 7px;
+
+  transition: 0.2s;
+}
+
+.nav-link span {
+  font-size: 18px;
+}
+
+.nav-link:hover {
+  background: #334155;
+  color: white;
+}
+
+.nav-link.active {
+  background: #2563eb;
+  color: white;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+  margin-left: 240px;
+  min-height: 100vh;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar {
+  height: 75px;
+
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 30px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.topbar h1 {
+  font-size: 22px;
+  color: #1e293b;
+}
+
+.topbar p {
+  color: #64748b;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* Admin profile */
+
+.admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #334155;
+  font-weight: bold;
+}
+
+.profile-circle {
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  background: #2563eb;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 30px;
+}
+
+/* Top Section */
+
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.add-btn {
+  background: #2563eb;
+  color: white;
+
+  border: none;
+
+  padding: 12px 20px;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+}
+
+.add-btn:hover {
+  background: #1d4ed8;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  background: white;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+th,
+td {
+  padding: 15px;
+
+  text-align: left;
+
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #2563eb;
+  color: white;
+}
+
+tr:hover {
+  background: #f8fafc;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+  display: none;
+
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 400px;
+
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 10px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  font-size: 22px;
+}
+
+.close {
+  font-size: 25px;
+
+  cursor: pointer;
+
+  color: #555;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+
+  padding: 11px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 6px;
+
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #2563eb;
+}
+
+.save-btn {
+  width: 100%;
+
+  padding: 12px;
+
+  border: none;
+
+  background: #16a34a;
+
+  color: white;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+}
+
+.save-btn:hover {
+  background: #15803d;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+  .sidebar {
+    width: 70px;
+    padding: 20px 10px;
+  }
+
+  .sidebar-logo h2 {
+    display: none;
+  }
+
+  .nav-link {
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-size: 0;
+  }
+
+  .nav-link span {
+    font-size: 20px;
+  }
+
+  .main-content {
+    margin-left: 70px;
+  }
+
+  .topbar {
+    padding: 0 15px;
+  }
+
+  .topbar h1 {
+    font-size: 18px;
+  }
+
+  .admin-profile span {
+    display: none;
+  }
+
+  .container {
+    padding: 15px;
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 700px;
+  }
+
+  .modal-content {
+    width: calc(100% - 30px);
+  }
+}
+
+
+// app.js
+// var paragraphs = document.getElementsByTagName("p");
+// paragraphs[1].innerHTML = "Hello World"
+
+
+// var paragraphs = document.getElementsByClassName('para')
+// console.log(paragraphs[0]);
+
+
+
+// var paragraph = document.querySelector('#heading')
+// var paragraph = document.querySelectorAll('.para')
+// console.log(paragraph);
+
+
+var modal = document.getElementById("userModal");
+var table = document.getElementById("userTable");
+var userName = document.getElementById("name");
+var age = document.getElementById("age");
+var education = document.getElementById("education");
+var userTable = document.getElementById("userTable");
+var allStudents = []
+
+function displayStudents() {
+    userTable.innerHTML = ""
+    for (var i = 0; i < allStudents.length; i++) {
+        var item = allStudents[i]
+        userTable.innerHTML += `<tr>
+            <td>${i + 1}</td>
+            <td>${item.name}</td>
+            <td>${item.age}</td>
+            <td>${item.education}</td>
+            <td><button>✏️</button><button onclick="deleteStudent('${i}')">❌</button></td>
+          </tr>`
+    }
+}
+
+displayStudents()
+
+function saveStudent() {
+    var obj = {
+        name: userName.value,
+        age: age.value,
+        education: education.value,
+        id: Date.now()
+    }
+
+    allStudents.push(obj);
+
+    // Reset the fields
+    userName.value = ""
+    age.value = ""
+    education.value = ""
+
+    // Close modal
+    closeModal();
+
+    displayStudents()
+}
+
+
+function deleteStudent(index) {
+    if (confirm("Are you sure you want to delete this record?")) {
+        allStudents.splice(Number(index), 1)
+        displayStudents()
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
