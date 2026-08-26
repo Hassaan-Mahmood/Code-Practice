@@ -53,12 +53,13 @@ console.log(52);
 console.log(53);
 console.log(54);
 console.log(55);
-console.log(56);
+console.log(56)
 console.log(57);
 console.log(58);
 console.log(59);
 console.log(60);
 console.log(61);
+console.log(62);
 // =================================================================================================
 // Todo Tasks List
 // =================================================================================================
