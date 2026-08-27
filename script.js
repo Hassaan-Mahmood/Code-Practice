@@ -1,66 +1,4 @@
-console.log(1);
-console.log(2);
-console.log(3);
-console.log(4);
-console.log(5);
-console.log(6);
-console.log(7);
-console.log(8);
-console.log(9);
-console.log(10);
-console.log(11);
-console.log(12);
-console.log(13);
-console.log(14);
-console.log(15);
-console.log(16);
-console.log(17);
-console.log(18);
-console.log(19);
-console.log(20);
-console.log(21);
-console.log(22);
-console.log(23);
-console.log(24);
-console.log(25);
-console.log(26);
-console.log(27);
-console.log(28);
-console.log(29);
-console.log(30);
-console.log(31);
-console.log(32);
-console.log(33);
-console.log(34);
-console.log(35);
-console.log(36);
-console.log(37);
-console.log(38);
-console.log(39);
-console.log(40);
-console.log(41);
-console.log(42);
-console.log(43);
-console.log(44);
-console.log(45);
-console.log(46);
-console.log(47);
-console.log(48);
-console.log(49);
-console.log(50);
-console.log(51);
-console.log(52);
-console.log(53);
-console.log(54);
-console.log(55);
-console.log(56)
-console.log(57);
-console.log(58);
-console.log(59);
-console.log(60);
-console.log(61);
-console.log(62);
-console.log(63);
+
 // =================================================================================================
 // Todo Tasks List
 // =================================================================================================
@@ -1407,6 +1345,223 @@ function deleteStudent(index) {
 
 
 
+// ====================== 27 / 8 / 2026 ======================
+
+var userName = document.getElementById('name');
+var email = document.getElementById('email');
+var password = document.getElementById('password');
+var confirmPassword = document.getElementById('confirm-password');
+var allUsers = []
+
+function signup() {
+    var validateForm = validation(userName.value, email.value, password.value, confirmPassword.value, false, false)
+
+    // validation false hui to yahin ruk jao
+    if (validateForm === false) {
+        return
+    }
+
+    var getUsers = localStorage.getItem('users');
+    if (getUsers) {
+        var ParsedUsers = JSON.parse(getUsers);
+        allUsers = ParsedUsers
+    }
+
+    var userExist = checkExistence(allUsers, email.value)
+    if (userExist === true) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "User already exist",
+        });
+        return false
+    }
+
+
+    var obj = {
+        name: userName.value,
+        email: email.value,
+        password: password.value,
+        confirmPassword: confirmPassword.value,
+        id: Date.now()
+    }
+
+    allUsers.push(obj);
+    localStorage.setItem('users', JSON.stringify(allUsers))
+
+    window.location.href = "index.html"
+}
+
+
+//global.js
+
+function openModal() {
+    modal.style.display = "flex";
+}
+
+function closeModal() {
+    modal.style.display = "none";
+}
+
+function windowClick() {
+    if (event.target === modal) {
+        closeModal();
+    }
+}
+
+function validation(name, email, password, confirmPass, age, education) {
+    var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+
+    // it will check that form has name field or not
+    if (name !== false) {
+        if (name.length < 3) {
+            // alert("Please enter a valid name")
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please enter a valid name",
+            });
+            return false
+        }
+    }
+
+    // it will check that form has name field or not
+    if (email !== false) {
+        if (emailRegex.test(email)) {
+
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please provide a valid email",
+            });
+            return false
+        }
+    }
+
+
+    if (password !== false) {
+        if (password.length < 6) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please provide a strong password",
+            });
+            return false
+        }
+    }
+
+
+    if (confirmPass !== false) {
+        if (confirmPass !== password) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please provide a matching password",
+            });
+            return false
+        }
+    }
+
+    if (age !== false) {
+        if (age < 12) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please enter a valid age",
+            });
+            return false
+        }
+    }
+
+
+    if (education !== false) {
+        if (education.length < 3) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please enter a valid degree name",
+            });
+            return false
+        }
+    }
+
+    return true
+}
+
+
+function checkExistence(array, email) {
+    var exist = false;
+    for (var i = 0; i < array.length; i++) {
+        var item = array[i];
+        if (item.email === email) {
+            exist = true;
+            break;
+        }
+    }
+    return exist
+}
+
+// Close modal when clicking outside
+window.onclick = windowClick
+
+
+// class 
+
+var modal = document.getElementById("userModal");
+var table = document.getElementById("userTable");
+var userName = document.getElementById("name");
+var userTable = document.getElementById("userTable");
+var allClasses = []
+
+function displayClass() {
+    userTable.innerHTML = ""
+    for (var i = 0; i < allClasses.length; i++) {
+        var item = allClasses[i]
+        userTable.innerHTML += `<tr>
+            <td>${i + 1}</td>
+            <td>${item.name}</td>
+            <td><button>✏️</button><button onclick="deleteTeacher('${i}')">❌</button></td>
+          </tr>`
+    }
+}
+
+displayClass()
+
+function saveClass() {
+
+    var validateForm = validation(userName.value, false, false, false, false, false)
+
+    // validation false hui to yahin ruk jao
+    if (validateForm === false) {
+        return
+    }
+
+    var obj = {
+        name: userName.value,
+        id: Date.now()
+    }
+
+    allClasses.push(obj);
+
+    // Reset the fields
+    userName.value = ""
+
+    // Close modal
+    closeModal();
+
+    displayClass()
+}
+
+
+function deleteTeacher(index) {
+    if (confirm("Are you sure you want to delete this record?")) {
+        allClasses.splice(Number(index), 1)
+        displayClass()
+    }
+
+}
 
 
 
