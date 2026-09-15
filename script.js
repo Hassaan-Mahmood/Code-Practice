@@ -67,6 +67,7 @@ alert('hello world 57');
 alert('hello world 58');
 alert('hello world 59');
 alert('hello world 60');
+alert('hello world 61');
 
 
 // =================================================================================================
@@ -81,7 +82,7 @@ alert('hello world 60');
 
 // let addBtn = document.getElementById("addBtn");
 // let editBtn = document.getElementById("editBtn");
-// let deleteBtn = document.getElementById("deleteBtn");
+// let deletalert('hello world 60');eBtn = document.getElementById("deleteBtn");
 // let clearBtn = document.getElementById("clearBtn");
 // let resetBtn = document.getElementById("resetBtn");
 
